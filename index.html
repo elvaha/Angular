@@ -1,60 +1,68 @@
 <!DOCTYPE html>
 <html ng-app="shop">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title></title>
-        <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
-        <link rel="stylesheet" href="css/style.css">
-    </head>
-    <body ng-controller="shopController">
-        
-        <div class="col-lg-2 pull-right" ng-show="cart">
-            <h1>Cart</h1>
-            <table class="table">
-                <tr ng-repeat="cartItem in cart">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body ng-controller="shopController">
+
+    <div class="col-lg-2 pull-right" ng-show="cart">
+        <h1>Cart</h1>
+        <table class="table">
+            <tr ng-repeat="cartItem in cart">
+                <td>
+                    <button class="btn btn-danger" ng-click="deleteFromCart()">X</button>
+                </td>
+                <td>
+                    {{cartItem.product.title}}
+                </td>
+                <td class="alert alert-info">
+                    {{cartItem.items}}
+                </td>
+            </tr>
+        </table>
+    </div>
+
+
+    <div class="col-lg-8 col-centered">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>style</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="product in products">
+                    <td>{{product.title}}</td>
+                    <td>{{product.style}}</td>
                     <td>
-                        <button class="btn btn-danger" ng-click="deleteFromCart()">X</button>
+                        <button type="button" class="btn btn-info" ng-click="viewProduct(product)">View</button>
                     </td>
                     <td>
-                        {{cartItem.product.title}}
-                    </td>
-                    <td class="alert alert-info">
-                        {{cartItem.items}}
+                        <button type="button" class="btn btn-success" ng-click="buyProduct()" ng-show="product.canPurchase">Buy</button>
                     </td>
                 </tr>
-            </table>
-        </div>
-        
-        
-        <div class="col-lg-8 col-centered">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>Title</th>
-                        <th>style</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr ng-repeat="product in products">
-                        <td>{{product.title}}</td>
-                        <td>{{product.style}}</td>
-                        <td><button type="button" class="btn btn-info" ng-click="viewProduct(product)">View</button></td>
-                        <td><button type="button" class="btn btn-success" ng-click="buyProduct()">Buy</button></td>
-                    </tr>
-                </tbody>
-            </table>    
-        </div>
-        
-        <div class="alert alert-success col-lg-8 col-centered" ng-show="selectedProduct">
-            {{selectedProduct}} : Has been selected!
-        </div>
-        
-        
-        
-      <script src="node_modules/angular/angular.min.js"></script>
-      <script src="AngularApp/AngularService.js"></script>
-      <script src="AngularApp/app.js"></script>
-    </body>
+            </tbody>
+        </table>
+    </div>
+
+
+    <div class="alert alert-success col-lg-8 col-centered" ng-show="selectedProduct">
+        {{selectedProduct}} : Has been selected!
+    </div>
+
+
+    <script src="node_modules/angular/angular.min.js"></script>
+    <script src="AngularApp/app.js"></script>
+    <script src="AngularApp/AngularService.js"></script>
+
+
+</body>
+
 </html>

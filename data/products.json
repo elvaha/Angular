@@ -2,16 +2,19 @@
     {
         "id": 1,
         "title": "Old Rasputin",
-        "style": "Russian Imperial Stout"
+        "style": "Russian Imperial Stout",
+        "canPurchase": true
     },
     {
         "id": 2,
         "title": "Speedway Stout",
-        "style": "Imperial Stout"
+        "style": "Imperial Stout",
+        "canPurchase": true
     },
     {
         "id": 3,
-        "title" : "Ale 16",
-        "style" : "Ale"
+        "title": "Ale 16",
+        "style": "Ale",
+        "canPurchase": false
     }
 ]
